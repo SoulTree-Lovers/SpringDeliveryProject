@@ -18,14 +18,17 @@ public class AccountApiController {
 
     private final AccountRepository accountRepository;
     @GetMapping("/me")
-    public Api<Object> me() {
+    public Api<AccountMeResponse> me() {
         var response = AccountMeResponse.builder()
                 .name("강승민")
                 .email("kang@naver.com")
                 .registeredAt(LocalDateTime.now())
                 .build();
 
+        if (true) {
+            throw new RuntimeException("런타임 예외 발생");
+        }
 
-        return Api.ERROR(UserErrorCode.USER_NOT_FOUND, "강승민이라는 사용자 없음.");
+        return Api.OK(response);
     }
 }
