@@ -4,7 +4,9 @@ import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
 import org.delivery.api.account.model.AccountMeResponse;
 import org.delivery.api.common.api.Api;
+import org.delivery.api.common.error.ErrorCode;
 import org.delivery.api.common.error.UserErrorCode;
+import org.delivery.api.common.exception.ApiException;
 import org.delivery.db.account.AccountEntity;
 import org.delivery.db.account.AccountRepository;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +28,7 @@ public class AccountApiController {
                 .build();
 
         if (true) {
-            throw new RuntimeException("런타임 예외 발생");
+            throw new ApiException(ErrorCode.SERVER_ERROR, "사용자 me 호출 시 에러 발생");
         }
 
         return Api.OK(response);
