@@ -31,6 +31,11 @@ public class UserOrderService {
                 .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }
 
+    public UserOrderEntity getUserOrderWithoutStatusWithThrow(Long id, Long userId) {
+        return userOrderRepository.findAllByIdAndUserId(id, userId)
+                .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
+    }
+
     // 현재 진행 중인 내역 가져오기
     public List<UserOrderEntity> current(Long userId) {
         return getUserOrderList(userId, List.of(
