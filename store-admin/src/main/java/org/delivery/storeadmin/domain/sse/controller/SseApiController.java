@@ -1,12 +1,17 @@
 package org.delivery.storeadmin.domain.sse.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Parameter;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
+import javax.swing.text.html.Option;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.delivery.storeadmin.domain.authorization.model.UserSession;
+import org.delivery.storeadmin.domain.sse.connection.SseConnectionPool;
+import org.delivery.storeadmin.domain.sse.connection.model.UserSseConnection;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +26,8 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 @RequestMapping("/api/sse")
 public class SseApiController {
 
-    private static final Map<String, SseEmitter> userConnection = new ConcurrentHashMap<>(); // 요청이 들어오면 여기에 저장 --> 쓰레드 세이프하도록 Concurrent 해시맵에 저장
+    private final SseConnectionPool sseConnectionPool;
+    private final ObjectMapper objectMapper;
 
     @GetMapping(path = "/connect", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public ResponseBodyEmitter connect(
@@ -29,7 +35,21 @@ public class SseApiController {
     ) {
         log.info("logined user: {}", userSession);
 
-        var emitter = new SseEmitter(1000L * 60); // 클라이언트와 SSE 연결이 되는 시점 (타임아웃 시간 설정 - ms단위임.)
+        var userSseConnection = UserSseConnection.connect(
+            userSession.getStoreId().toString(),
+            sseConnectionPool,
+            objectMapper
+        );
+
+        // 커넥션 풀에 추가
+        sseConnectionPool.addSession(userSseConnection.getUniqueKey(), userSseConnection);
+
+        return userSseConnection.getSseEmitter();
+
+
+   /*     var emitter = new SseEmitter(1000L * 60); // 클라이언트와 SSE 연결이 되는 시점 (타임아웃 시간 설정 - ms단위임.)
+
+        var temp = UserSseConnection.connect(userSession.getStoreId().toString(), sseConnectionPool);
 
         userConnection.put(userSession.getUserId().toString(), emitter); // 이미터 저장
 
@@ -58,25 +78,19 @@ public class SseApiController {
             emitter.completeWithError(e); // 에러 발생 시
         }
 
-        return emitter;
+        return emitter; */
     }
 
     @GetMapping("/push-event")
     public void pushEvent(
         @Parameter(hidden = true) @AuthenticationPrincipal UserSession userSession
     ) {
-        // 기존에 연결된 유저 찾기
-        var emitter = userConnection.get(userSession.getUserId().toString());
+        // 기존 세션 가져오기
+        var userSseConnection = sseConnectionPool.getSession(userSession.getStoreId().toString());
 
-        var event = SseEmitter
-            .event() // 여기가 비어 있으면,
-            .data("hello") // 디폴트로 onmessage에 전달됨.
-            ;
-
-        try {
-            emitter.send(event);
-        } catch (IOException e) {
-            emitter.completeWithError(e);
-        }
+        Optional.ofNullable(userSseConnection)
+            .ifPresent(it -> {
+                it.sendMessage("hello world!");
+            });
     }
 }
