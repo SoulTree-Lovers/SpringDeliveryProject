@@ -8,11 +8,11 @@ group = 'org.delivery'
 version = '1.0-SNAPSHOT'
 sourceCompatibility = '17'
 
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
-}
+//configurations {
+//    compileOnly {
+//        extendsFrom annotationProcessor
+//    }
+//}
 
 repositories {
     mavenCentral()
@@ -20,8 +20,8 @@ repositories {
 
 
 dependencies {
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
 //    testImplementation platform('org.junit:junit-bom:5.9.1')
 //    testImplementation 'org.junit.jupiter:junit-jupiter'
 }
