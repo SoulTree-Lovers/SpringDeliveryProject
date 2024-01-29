@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="kor" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1> Main Page</h1>
+
+    <!--UserDetails의 객체에 접근할 수 있다.  (근데 강의에서 알려준대로 하면 에러가 난다..) -->
+    <div th:text="${#authentication}"></div> <br>
+<!--    <h1 th:text="${#authentication.principal.storeName}"></h1> <br>-->
+<!--    <h1 th:text="${#authentication.principal.role}"></h1> <br>-->
+<!--    <h1 th:text="${#authentication.name}"></h1> <br>-->
+<!--    <p>User Name: <span th:text="${#authentication.name}"></span></p>-->
+<!--    <p>User Name: <span sec:authentication="name"></span></p>-->
+
+
+</body>
+</html>
