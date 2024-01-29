@@ -9,12 +9,25 @@
 
     <!--UserDetails의 객체에 접근할 수 있다.  (근데 강의에서 알려준대로 하면 에러가 난다..) -->
     <div th:text="${#authentication}"></div> <br>
-<!--    <h1 th:text="${#authentication.principal.storeName}"></h1> <br>-->
-<!--    <h1 th:text="${#authentication.principal.role}"></h1> <br>-->
-<!--    <h1 th:text="${#authentication.name}"></h1> <br>-->
-<!--    <p>User Name: <span th:text="${#authentication.name}"></span></p>-->
-<!--    <p>User Name: <span sec:authentication="name"></span></p>-->
+
 
 
 </body>
+
+<script>
+    const url = "http://localhost:8081/api/sse/connect";    // 접속할 주소
+    const eventSource = new EventSource(url);               // SSE 연결
+
+    eventSource.onopen = event => {
+        console.log("sse connection");
+        console.log(event);
+    }
+
+    eventSource.onmessage = event => {
+        console.log("receive data: " + event.data);
+    }
+
+
+
+</script>
 </html>
