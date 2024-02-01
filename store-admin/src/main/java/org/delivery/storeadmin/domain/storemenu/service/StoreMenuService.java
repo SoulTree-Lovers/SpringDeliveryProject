@@ -1,5 +1,6 @@
 package org.delivery.storeadmin.domain.storemenu.service;
 
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.delivery.db.storemenu.StoreMenuEntity;
 import org.delivery.db.storemenu.StoreMenuRepository;
@@ -14,7 +15,7 @@ public class StoreMenuService {
 
 
     public StoreMenuEntity getStoreMenuWithThrow(Long menuId) {
-        return storeMenuRepository.findFirstByIdAndStatusOrderByIdDesc(menuId, StoreMenuStatus.REGISTERED)
+        return Optional.ofNullable(storeMenuRepository.findFirstByIdAndStatusOrderByIdDesc(menuId, StoreMenuStatus.REGISTERED))
             .orElseThrow(() -> new RuntimeException("Store Menu Not Found"));
     }
 }

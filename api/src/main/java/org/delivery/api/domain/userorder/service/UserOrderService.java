@@ -27,12 +27,12 @@ public class UserOrderService {
     }
 
     public UserOrderEntity getUserOrderWithThrow(Long id, Long userId) {
-        return userOrderRepository.findAllByIdAndStatusAndUserId(id, UserOrderStatus.REGISTERED, userId)
+        return Optional.ofNullable(userOrderRepository.findAllByIdAndStatusAndUserId(id, UserOrderStatus.REGISTERED, userId))
                 .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }
 
     public UserOrderEntity getUserOrderWithoutStatusWithThrow(Long id, Long userId) {
-        return userOrderRepository.findAllByIdAndUserId(id, userId)
+        return Optional.ofNullable(userOrderRepository.findAllByIdAndUserId(id, userId))
                 .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }
 

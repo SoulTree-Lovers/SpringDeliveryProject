@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.delivery.db.storemenu.enums.StoreMenuStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+/* 코틀린으로 변경
 public interface StoreMenuRepository extends JpaRepository<StoreMenuEntity, Long> {
 
     // 유효한 메뉴 체크
@@ -15,3 +16,4 @@ public interface StoreMenuRepository extends JpaRepository<StoreMenuEntity, Long
     // select * from store_menu where store_id = ? and status = ? order by sequence desc;
     List<StoreMenuEntity> findAllByStoreIdAndStatusOrderBySequenceDesc(Long storeId, StoreMenuStatus status);
 }
+*/

@@ -1,5 +1,6 @@
 package org.delivery.storeadmin.domain.authorization;
 
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.delivery.db.store.StoreRepository;
@@ -25,8 +26,10 @@ public class AuthorizationService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         var storeUserEntity = storeUserService.getRegisteredUser(username);
-        var storeEntity = storeRepository.findFirstByIdAndStatusOrderByIdDesc(storeUserEntity.get().getStoreId(),
-            StoreStatus.REGISTERED);
+        var storeEntity = Optional.ofNullable(
+            storeRepository.findFirstByIdAndStatusOrderByIdDesc(storeUserEntity.get().getStoreId(),
+            StoreStatus.REGISTERED)
+        );
 
         return storeUserEntity.map(it -> {
 

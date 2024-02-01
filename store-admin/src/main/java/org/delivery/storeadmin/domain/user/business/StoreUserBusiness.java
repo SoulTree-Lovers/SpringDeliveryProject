@@ -1,6 +1,7 @@
 package org.delivery.storeadmin.domain.user.business;
 
 
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.delivery.db.store.StoreRepository;
 import org.delivery.db.store.enums.StoreStatus;
@@ -19,7 +20,7 @@ public class StoreUserBusiness {
     private final StoreRepository storeRepository; // TODO: service로 변경하기
 
     public StoreUserResponse register(StoreUserRegisterRequest request) {
-        var storeEntity = storeRepository.findFirstByNameAndStatusOrderByIdDesc(request.getStoreName(), StoreStatus.REGISTERED);
+        var storeEntity = Optional.ofNullable(storeRepository.findFirstByNameAndStatusOrderByIdDesc(request.getStoreName(), StoreStatus.REGISTERED));
 
         var storeUserentity = storeUserConverter.toEntity(request, storeEntity.get());
 

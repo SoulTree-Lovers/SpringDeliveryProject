@@ -20,7 +20,7 @@ public class StoreService {
 
     // 유효한 스토어 검색
     public StoreEntity getStoreWithThrow(Long id) {
-        var entity = storeRepository.findFirstByIdAndStatusOrderByIdDesc(id, StoreStatus.REGISTERED); // 디버깅을 위해 변수로 구분하기.
+        var entity = Optional.ofNullable(storeRepository.findFirstByIdAndStatusOrderByIdDesc(id, StoreStatus.REGISTERED)); // 디버깅을 위해 변수로 구분하기.
         return entity.orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }
 
