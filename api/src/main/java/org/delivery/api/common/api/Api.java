@@ -1,12 +1,13 @@
-package org.delivery.api.common.api;
+package org.delivery.common.api;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.delivery.api.common.error.ErrorCodeInterface;
+import org.delivery.common.error.ErrorCodeInterface;
 
+/* 코틀린으로 변경
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -53,3 +54,4 @@ public class Api<T> {
         return api;
     }
 }
+*/

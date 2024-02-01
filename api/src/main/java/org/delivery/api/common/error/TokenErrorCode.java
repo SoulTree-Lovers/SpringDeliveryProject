@@ -6,6 +6,7 @@ import lombok.Getter;
 /**
  * Token의 경우 2000번대 에러 코드 사용
  */
+/* 코틀린으로 변경
 @AllArgsConstructor
 @Getter
 public enum TokenErrorCode implements ErrorCodeInterface {
@@ -19,3 +20,4 @@ public enum TokenErrorCode implements ErrorCodeInterface {
     private final Integer errorCode; // 세분화된 에러 코드 (자체 에러 코드 생성)
     private final String description; // 에러 이유
 }
+*/

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
+/* 코틀린으로 변경
 @AllArgsConstructor
 @Getter
 public enum ErrorCode implements ErrorCodeInterface{
@@ -18,3 +19,4 @@ public enum ErrorCode implements ErrorCodeInterface{
     private final String description; // 에러 이유
 
 }
+*/

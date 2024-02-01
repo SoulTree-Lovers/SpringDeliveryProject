@@ -1,9 +1,10 @@
-package org.delivery.api.common.exception;
+package org.delivery.common.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.delivery.api.common.error.ErrorCodeInterface;
+import org.delivery.common.error.ErrorCodeInterface;
 
+/* 코틀린으로 변경
 @Getter
 public class ApiException extends RuntimeException implements ApiExceptionInterface{
 
@@ -33,8 +34,5 @@ public class ApiException extends RuntimeException implements ApiExceptionInterf
         this.errorCodeInterface = errorCodeInterface;
         this.errorDescription = errorDescription;
     }
-
-
-
-
 }
+*/

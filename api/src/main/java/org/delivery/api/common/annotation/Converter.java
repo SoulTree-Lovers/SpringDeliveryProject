@@ -1,4 +1,4 @@
-package org.delivery.api.common.annotation;
+package org.delivery.common.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,6 +7,7 @@ import java.lang.annotation.Target;
 import org.springframework.core.annotation.AliasFor;
 import org.springframework.stereotype.Service;
 
+/* 코틀린으로 변경 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Service
@@ -14,4 +15,4 @@ public @interface Converter {
 
     @AliasFor(annotation = Service.class)
     String value() default "";
-}
+}*/
