@@ -9,6 +9,7 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/* 코틀린으로 변경
 @RequiredArgsConstructor
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
@@ -46,3 +47,4 @@ public class WebConfig implements WebMvcConfigurer {
         resolvers.add(userSessionResolver);
     }
 }
+*/

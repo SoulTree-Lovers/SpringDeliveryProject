@@ -5,6 +5,7 @@ import io.swagger.v3.core.jackson.ModelResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/* 코틀린으로 변경
 @Configuration
 public class SwaggerConfig {
 
@@ -15,4 +16,5 @@ public class SwaggerConfig {
     }
 }
 
+*/
 

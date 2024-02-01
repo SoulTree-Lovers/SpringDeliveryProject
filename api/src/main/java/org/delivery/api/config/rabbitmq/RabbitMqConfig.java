@@ -12,6 +12,7 @@ import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/* 코틀린으로 변경
 @Configuration
 public class RabbitMqConfig {
 
@@ -46,3 +47,4 @@ public class RabbitMqConfig {
         return new Jackson2JsonMessageConverter(objectMapper);
     }
 }
+*/

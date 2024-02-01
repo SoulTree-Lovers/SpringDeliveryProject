@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/* 코틀린으로 변경
 @RequiredArgsConstructor
 @Slf4j
 @RestController
@@ -18,3 +19,4 @@ public class HealthOpenApiController {
         log.info("health call");
     }
 }
+*/
