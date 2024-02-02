@@ -22,6 +22,7 @@ import org.delivery.api.domain.userordermenu.converter.UserOrderMenuConverter;
 import org.delivery.api.domain.userordermenu.service.UserOrderMenuService;
 import org.delivery.db.userordermenu.enums.UserOrderMenuStatus;
 
+/* 코틀린으로 변경
 @Slf4j
 @Business
 @RequiredArgsConstructor
@@ -38,12 +39,12 @@ public class UserOrderBusiness {
     private final UserOrderProducer userOrderProducer;
     private final ObjectMapper objectMapper;
 
-    /**
+    *//**
      * 1. 사용자, 메뉴 id를 받음
      * 2. userOrder 생성
      * 3. userOrderMenu 생성
      * 4. 응답 생성
-      */
+      *//*
     public UserOrderResponse userOrder(User user, UserOrderRequest body) {
 
         var storeEntity = storeService.getStoreWithThrow(body.getStoreId());
@@ -84,13 +85,13 @@ public class UserOrderBusiness {
 
         var userOrderDetailResponseList = userOrderEntityList.stream()
                 .map(userOrderEntity -> {
-                    log.info("사용자의 주문: {}", userOrderEntity);
-                    try {
-                        var jsonString = objectMapper.writeValueAsString(userOrderEntity);
-                        log.info("json string: {}", jsonString);
-                    } catch (JsonProcessingException e) {
-                        log.error("", e);
-                    }
+//                    log.info("사용자의 주문: {}", userOrderEntity);
+//                    try {
+//                        var jsonString = objectMapper.writeValueAsString(userOrderEntity);
+//                        log.info("json string: {}", jsonString);
+//                    } catch (JsonProcessingException e) {
+//                        log.error("", e);
+//                    }
 
                     // 사용자가 주문한 메뉴
 //                    var userOrderMenuList = userOrderMenuService.getUserOrderMenu(userOrderEntity.getId());
@@ -174,4 +175,4 @@ public class UserOrderBusiness {
             .build()
             ;
     }
-}
+}*/

@@ -8,7 +8,15 @@ import lombok.NoArgsConstructor;
 import org.delivery.api.domain.store.controller.model.StoreResponse;
 import org.delivery.api.domain.storemenu.controller.model.StoreMenuResponse;
 
+/* 코틀린으로 변경
 @Data
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class UserOrderDetailResponse {
+
+    private UserOrderRespon
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -21,3 +29,4 @@ public class UserOrderDetailResponse {
     private List<StoreMenuResponse> storeMenuResponses; // 메뉴 n개 정보
 
 }
+*/
