@@ -24,6 +24,7 @@ import org.delivery.db.store.StoreEntity;
 import org.delivery.db.userorder.enums.UserOrderStatus;
 import org.delivery.db.userordermenu.UserOrderMenuEntity;
 
+/* 코틀린으로 변경
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -63,3 +64,4 @@ public class UserOrderEntity extends BaseEntity {
     private List<UserOrderMenuEntity> userOrderMenuEntityList;
 
 }
+*/

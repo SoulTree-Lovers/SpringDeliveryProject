@@ -1,3 +1,4 @@
+/* 코틀린으로 변경
 package org.delivery.api.domain.userorder.converter;
 
 import java.math.BigDecimal;
@@ -8,6 +9,7 @@ import org.delivery.api.domain.userorder.controller.model.UserOrderResponse;
 import org.delivery.db.store.StoreEntity;
 import org.delivery.db.storemenu.StoreMenuEntity;
 import org.delivery.db.userorder.UserOrderEntity;
+
 
 @Converter
 public class UserOrderConverter {
@@ -38,3 +40,4 @@ public class UserOrderConverter {
             .build();
     }
 }
+*/

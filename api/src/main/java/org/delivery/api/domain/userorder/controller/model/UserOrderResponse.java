@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.delivery.db.userorder.enums.UserOrderStatus;
 
+/* 코틀린으로 변경
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -30,3 +31,4 @@ public class UserOrderResponse {
 
     private LocalDateTime receivedAt;
 }
+*/

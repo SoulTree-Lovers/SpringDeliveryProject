@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.delivery.api.domain.userorder.converter.UserOrderConverter;
 import org.delivery.common.annotation.Business;
 import org.delivery.api.domain.store.converter.StoreConverter;
 import org.delivery.api.domain.store.service.StoreService;
@@ -15,12 +16,10 @@ import org.delivery.api.domain.user.model.User;
 import org.delivery.api.domain.userorder.controller.model.UserOrderDetailResponse;
 import org.delivery.api.domain.userorder.controller.model.UserOrderRequest;
 import org.delivery.api.domain.userorder.controller.model.UserOrderResponse;
-import org.delivery.api.domain.userorder.converter.UserOrderConverter;
 import org.delivery.api.domain.userorder.producer.UserOrderProducer;
 import org.delivery.api.domain.userorder.service.UserOrderService;
 import org.delivery.api.domain.userordermenu.converter.UserOrderMenuConverter;
 import org.delivery.api.domain.userordermenu.service.UserOrderMenuService;
-import org.delivery.db.userorder.UserOrderEntity;
 import org.delivery.db.userordermenu.enums.UserOrderMenuStatus;
 
 @Slf4j
