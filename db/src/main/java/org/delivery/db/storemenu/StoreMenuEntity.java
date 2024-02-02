@@ -4,15 +4,21 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.delivery.db.BaseEntity;
+import org.delivery.db.store.StoreEntity;
 import org.delivery.db.storemenu.enums.StoreMenuStatus;
+import org.delivery.db.userordermenu.UserOrderMenuEntity;
 
 @Data
 @AllArgsConstructor
@@ -23,8 +29,9 @@ import org.delivery.db.storemenu.enums.StoreMenuStatus;
 @Table(name = "store_menu")
 public class StoreMenuEntity extends BaseEntity {
 
-    @Column(nullable = false)
-    private Long storeId;
+    @JoinColumn(nullable = false)
+    @ManyToOne
+    private StoreEntity store;
 
     @Column(length = 100, nullable = false)
     private String name;
@@ -42,4 +49,7 @@ public class StoreMenuEntity extends BaseEntity {
     private int likeCount; // 기본값이 0
 
     private int sequence;
+
+    @OneToMany(mappedBy = "storeMenu")
+    private List<UserOrderMenuEntity> userOrderMenuEntityList;
 }

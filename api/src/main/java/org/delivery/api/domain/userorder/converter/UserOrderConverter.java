@@ -5,13 +5,14 @@ import java.util.List;
 import org.delivery.common.annotation.Converter;
 import org.delivery.api.domain.user.model.User;
 import org.delivery.api.domain.userorder.controller.model.UserOrderResponse;
+import org.delivery.db.store.StoreEntity;
 import org.delivery.db.storemenu.StoreMenuEntity;
 import org.delivery.db.userorder.UserOrderEntity;
 
 @Converter
 public class UserOrderConverter {
 
-    public UserOrderEntity toEntity(User user, Long storeId, List<StoreMenuEntity> storeMenuEntity) {
+    public UserOrderEntity toEntity(User user, StoreEntity storeEntity, List<StoreMenuEntity> storeMenuEntity) {
         // 주문한 메뉴 가격의 총합 구하기
         var totalAmount = storeMenuEntity.stream()
             .map(it -> it.getAmount())
@@ -19,7 +20,7 @@ public class UserOrderConverter {
 
         return UserOrderEntity.builder()
             .userId(user.getId())
-            .storeId(storeId)
+            .store(storeEntity)
             .amount(totalAmount)
             .build();
     }
