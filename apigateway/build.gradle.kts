@@ -24,6 +24,8 @@ dependencies {
 //    implementation(project(mapOf("path" to ":common"))) // common module 의존성 추가
 //    implementation(project(":common"))
 
+    // kotlin
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
 //    implementation("org.springframework.cloud:spring-cloud-starter-gateway-mvc")
     implementation("org.springframework.cloud:spring-cloud-starter-gateway")

@@ -81,14 +81,23 @@ class ServiceApiPrivateFilter: AbstractGatewayFilterFactory<ServiceApiPrivateFil
                 .flatMap {response -> // account에서 응답이 왔을 때
                     log.info("response: {}", response)
 
-                    // 3. 사용자 정보 추가
+                    // 3. header에 사용자 정보 추가
+                    val userId = response.userId?.toString()
 
-                    val mono = chain.filter(exchange)
+                    val proxyRequest = exchange.request.mutate()
+                        .header("x-user-id", userId)
+                        .build()
+
+                    val requestBuild = exchange.mutate().request(proxyRequest).build()
+
+                    val mono = chain.filter(requestBuild)
 
                     mono
                 }
-
-
+                .onErrorMap { e ->
+                    log.error("", e)
+                    e
+                }
         }
     }
 }

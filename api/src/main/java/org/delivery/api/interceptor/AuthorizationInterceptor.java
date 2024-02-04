@@ -38,12 +38,17 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
         }
 
         // TODO: header 검증
+        /* 토큰 검증을 API Gateway에서 실시하도록 변경
         var accessToken = request.getHeader("authorization-token");
         if (accessToken == null) {
             throw new ApiException(TokenErrorCode.AUTHORIZATION_TOKEN_NOT_FOUNT);
+        }*/
+        var userId = request.getHeader("x-user-id"); // 이제는 API Gateway에서 토큰 검증이 완료된 userId만 넘어옴
+        if (userId == null) {
+            throw new ApiException(ErrorCode.BAD_REQUEST, "x-user-id header가 없음.");
         }
 
-        var userId = tokenBusiness.validationAccessToken(accessToken);
+//        var userId = tokenBusiness.validationAccessToken(accessToken);
 
         if (userId != null) { // 유저를 찾았다면, 인증 성공
             RequestAttributes requestContext = Objects.requireNonNull(RequestContextHolder.getRequestAttributes());
@@ -51,6 +56,8 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
             return true;
         }
 
-        throw new ApiException(ErrorCode.BAD_REQUEST, "인증 실패");
+//        throw new ApiException(ErrorCode.BAD_REQUEST, "인증 실패");
+
+        return true;
     }
 }
