@@ -1,3 +1,5 @@
+server:
+  name: delivery-api
 spring:
   rabbitmq:
     host: localhost
