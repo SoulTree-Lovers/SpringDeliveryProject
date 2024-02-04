@@ -21,9 +21,13 @@ repositories {
 extra["springCloudVersion"] = "2023.0.0"
 
 dependencies {
+//    implementation(project(mapOf("path" to ":common"))) // common module 의존성 추가
+//    implementation(project(":common"))
+
     implementation("org.jetbrains.kotlin:kotlin-reflect")
 //    implementation("org.springframework.cloud:spring-cloud-starter-gateway-mvc")
     implementation("org.springframework.cloud:spring-cloud-starter-gateway")
+    implementation(project(":common"))
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
     runtimeOnly("io.netty:netty-resolver-dns-native-macos:4.1.94.Final:osx-aarch_64") // mac os 를 위한 설정
