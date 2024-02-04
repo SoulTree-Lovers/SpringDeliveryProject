@@ -3,6 +3,7 @@ package org.delivery.api.domain.user.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.delivery.common.api.Api;
 import org.delivery.api.domain.token.controller.model.TokenResponse;
 import org.delivery.api.domain.user.business.UserBusiness;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/open-api/user")
@@ -36,6 +38,7 @@ public class UserOpenApiController {
     public Api<TokenResponse> login(
             @Valid @RequestBody Api<UserLoginRequest> userLoginRequest
     ) {
+        log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         var response = userBusiness.login(userLoginRequest.getBody());
         return Api.OK(response);
     }
