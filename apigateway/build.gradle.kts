@@ -7,7 +7,7 @@ plugins {
     kotlin("plugin.spring") version "1.9.22"
 }
 
-group = "com.example"
+group = "org.delivery"
 version = "0.0.1-SNAPSHOT"
 
 java {
@@ -22,8 +22,11 @@ extra["springCloudVersion"] = "2023.0.0"
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.springframework.cloud:spring-cloud-starter-gateway-mvc")
+//    implementation("org.springframework.cloud:spring-cloud-starter-gateway-mvc")
+    implementation("org.springframework.cloud:spring-cloud-starter-gateway")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("io.projectreactor:reactor-test")
+    runtimeOnly("io.netty:netty-resolver-dns-native-macos:4.1.94.Final:osx-aarch_64") // mac os 를 위한 설정
 }
 
 dependencyManagement {

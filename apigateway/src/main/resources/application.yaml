@@ -1,3 +1,14 @@
 server:
   port: 9090
 
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: public-service-api # 서버 이름 (변경 가능)
+          uri: http://localhost:8080 # api 서버 주소
+          predicates:
+            - Path=/service-api/open-api/** # api url 주소: /service-api/open-api/ 하위 모든 주소에 매핑
+          filters:
+            - RewritePath=/service-api(?<segment>/?.*), $\{segment} # url 의 /service-api/ 부분을 삭제
+            - ServiceApiPublicFilter # 직접 만든 필터 이름
