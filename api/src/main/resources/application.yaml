@@ -1,6 +1,19 @@
 server:
   name: delivery-api
+
+management: # spring actuator 설정
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
 spring:
+  boot:
+    admin:
+      client:
+        url:
+          - http://localhost:8085 # 서버 주소
+
   rabbitmq:
     host: localhost
     port: 5672

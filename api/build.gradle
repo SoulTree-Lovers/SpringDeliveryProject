@@ -54,6 +54,20 @@ dependencies {
     // logstash
     implementation group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '7.3'
 
+    // spring boot admin
+    implementation 'de.codecentric:spring-boot-admin-starter-client' // 클라이언트
+}
+
+// spring boot admin
+ext {
+    set('springBootAdminVersion', "3.2.1")
+}
+
+// spring boot admin
+dependencyManagement {
+    imports {
+        mavenBom("de.codecentric:spring-boot-admin-dependencies:${property("springBootAdminVersion")}")
+    }
 }
 
 test {
