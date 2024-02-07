@@ -20,7 +20,8 @@ class WebConfig(
     private val DEFAULT_EXCLUDE = listOf( // 기본 주소
         "/",
         "favicon.ico", // 아이콘
-        "/error"
+        "/error",
+        "/actuator/**" // actuator 인증
     );
 
     private val SWAGGER = listOf(

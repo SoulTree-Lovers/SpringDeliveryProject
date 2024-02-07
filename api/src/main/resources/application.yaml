@@ -7,6 +7,10 @@ management: # spring actuator 설정
       exposure:
         include: "*"
 
+  endpoint:
+    health:
+      show-details: always
+
 spring:
   boot:
     admin:
@@ -40,3 +44,8 @@ token:
     plus-hour: 1
   refresh-token:
     plus-hour: 12
+
+logging:
+  config: classpath:logback-dev.xml
+  file:
+    name: logFile.log
