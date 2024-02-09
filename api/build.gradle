@@ -65,6 +65,8 @@ dependencies {
 
     // Micrometer Registry StatsD
     implementation group: 'io.micrometer', name: 'micrometer-registry-statsd', version: '1.12.1'
+    implementation group: 'io.micrometer', name: 'micrometer-core', version: '1.12.1'
+
 }
 
 // spring boot admin
