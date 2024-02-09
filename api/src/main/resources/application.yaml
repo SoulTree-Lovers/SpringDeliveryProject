@@ -8,8 +8,14 @@ management: # spring actuator 설정
         include: "*"
   metrics:
     export:
-      prometheus:
+      prometheus: # prometheus, grafana 모니터링
         enabled: true
+      statsd: # tick 모니터링
+        enabled: true
+        flavor: telegraf
+        polling-frequency: 5s
+        host: localhost
+        port: 8125
 
   endpoint:
     prometheus:
