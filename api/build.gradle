@@ -63,6 +63,8 @@ dependencies {
     // Micrometer Registry Prometheus
     implementation group: 'io.micrometer', name: 'micrometer-registry-prometheus', version: '1.12.2'
 
+    // Micrometer Registry StatsD
+    implementation group: 'io.micrometer', name: 'micrometer-registry-statsd', version: '1.12.1'
 }
 
 // spring boot admin
