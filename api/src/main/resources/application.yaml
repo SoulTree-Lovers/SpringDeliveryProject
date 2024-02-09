@@ -6,11 +6,22 @@ management: # spring actuator 설정
     web:
       exposure:
         include: "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true
 
   endpoint:
+    prometheus:
+      enabled: true
+
     health:
       show-details: always
 
+#  prometheus:
+#    metrics:
+#      export:
+#        enabled: true
 spring:
   boot:
     admin:
