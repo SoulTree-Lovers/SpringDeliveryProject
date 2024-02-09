@@ -56,6 +56,13 @@ dependencies {
 
     // spring boot admin
     implementation 'de.codecentric:spring-boot-admin-starter-client' // 클라이언트
+
+    // spring boot actuator
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '3.2.1'
+
+    // Micrometer Registry Prometheus
+    implementation group: 'io.micrometer', name: 'micrometer-registry-prometheus', version: '1.12.2'
+
 }
 
 // spring boot admin
